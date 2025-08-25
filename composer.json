@@ -1,0 +1,78 @@
+{
+    "name": "michaelcrowcroft/bing-webmaster-laravel",
+    "description": "A Laravel package for Bing's Webmaster API",
+    "keywords": [
+        "bing",
+        "webmaster",
+        "laravel",
+        "seo",
+        "analytics"
+    ],
+    "homepage": "https://github.com/michaelcrowcroft/bing-webmaster-laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Crowcroft",
+            "email": "michael@aibrandrank.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "illuminate/contracts": "^11.0||^12.0",
+        "saloonphp/laravel-plugin": "^3.0",
+        "saloonphp/saloon": "^3.0",
+        "spatie/laravel-package-tools": "^1.16"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.14",
+        "nunomaduro/collision": "^8.8",
+        "larastan/larastan": "^3.0",
+        "orchestra/testbench": "^10.0.0||^9.0.0",
+        "pestphp/pest": "^4.0",
+        "pestphp/pest-plugin-arch": "^4.0",
+        "pestphp/pest-plugin-laravel": "^4.0",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MichaelCrowcroft\\BingWebmaster\\": "src/",
+            "MichaelCrowcroft\\BingWebmaster\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MichaelCrowcroft\\BingWebmaster\\Tests\\": "tests/",
+            "Workbench\\App\\": "workbench/app/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@composer run prepare",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MichaelCrowcroft\\BingWebmaster\\BingWebmasterServiceProvider"
+            ],
+            "aliases": {
+                "BingWebmaster": "MichaelCrowcroft\\BingWebmaster\\Facades\\BingWebmaster"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
